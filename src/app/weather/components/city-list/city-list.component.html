@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="header">
+        <input type="text" name="searchKey" class="search-box" placeholder="Search Here"[(ngModel)]="searchKey">
+        <div class="add-icon">
+                <mat-icon (click)="add(searchKey)">{{"add"}} </mat-icon>
+        </div>
+    </div>
+
+    <div class="errorMsg">{{errorMsg}}</div>
+
+    <div class="list-container">
+        <div class="list-item" *ngFor="let city of cities">
+            <div class="item">
+                    {{ city.cityName }}
+            </div>
+            <div class="action">
+                <mat-icon (click) = "select(city.cityName)">{{"refresh"}}</mat-icon>
+                <mat-icon (click) = "remove(city.cityName)">{{"close"}}</mat-icon>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

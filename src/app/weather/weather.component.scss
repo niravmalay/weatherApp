@@ -1,0 +1,22 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+    padding: 10px;
+}
+
+.left-panel {
+    width: 25%;
+    height: 99%;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    padding: 0 10px 10px 10px;
+}
+
+.right-panel {
+    flex: 1;
+    height: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    margin-left: 15px;
+}

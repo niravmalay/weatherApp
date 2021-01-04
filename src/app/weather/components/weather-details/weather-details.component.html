@@ -1,0 +1,40 @@
+<div class="weather-detail-container">
+    <p class= "weather-detail-header" *ngIf="currentWeatherDetails?.weather">{{ currentWeatherDetails?.name }}</p>
+    <div class="refresh-icon" *ngIf="currentWeatherDetails?.weather" (click) = "select(currentWeatherDetails.name)">
+        <!-- <mat-icon (click) = "select(currentWeatherDetails.name)">{{"refresh"}}</mat-icon> -->
+        <mat-icon>{{"refresh"}}</mat-icon>
+    </div>
+
+    <div class="current-weather-detail" *ngIf="!currentWeatherDetails?.weather">
+
+        <h3>Search to get weather result</h3>
+    </div>
+
+    <div class="current-weather-detail" *ngIf="currentWeatherDetails?.weather">
+
+        <div class="weather-icon-container">
+            <div>
+               <img *ngIf="currentWeatherDetails.weather.length" [src]= "getWeatherIcon(currentWeatherDetails?.weather[0]?.icon, '4x')"> 
+            </div>
+        </div>
+        <div class="weather-detail-data">
+            <p *ngIf="currentWeatherDetails.main.temp">{{ currentWeatherDetails?.main?.temp - 273 | number:'2.0-2'}}°C</p>
+            <p *ngIf="currentWeatherDetails.weather.length">{{ currentWeatherDetails?.weather[0]?.description }}</p>
+            <p>{{ currentWeatherDetails?.wind?.speed }}ms, {{ currentWeatherDetails?.wind?.deg }}deg</p>
+            <p>Pressure {{ currentWeatherDetails?.main?.pressure }}</p>
+        </div>
+
+    </div>
+
+    <div class="weather-detail-list" *ngIf="forcast?.daily">
+        <div class="weather-detail-list-item" *ngFor="let item of forcast?.daily | slice: 0: 5">
+            <div>
+                <img *ngIf="item.weather.length" [src]= "getWeatherIcon(item?.weather[0]?.icon, '2x')"> 
+            </div>
+            <p *ngIf="item.temp && item.temp.max">{{item?.temp?.max - 273 | number:'2.0-2'}}°C</p>
+            <!-- {{item?.dt | date:'fullDate'}} -->
+        </div>
+        
+    </div>
+
+</div>
